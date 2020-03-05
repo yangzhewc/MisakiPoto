@@ -848,6 +848,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 573722487}
+  - component: {fileID: 573722486}
   m_Layer: 0
   m_Name: FieldCenter
   m_TagString: Untagged
@@ -855,6 +856,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &573722486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 573722485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7655ccc32813a4b972ab5ecc93584b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AppearSlimeCount: 0
+  SpawnSlimePos: {x: 0, y: 0, z: 0}
 --- !u!4 &573722487
 Transform:
   m_ObjectHideFlags: 0
@@ -1741,6 +1756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraRotate: 0
+  operate: 0
   nowTop: 0
 --- !u!4 &918717201
 Transform:

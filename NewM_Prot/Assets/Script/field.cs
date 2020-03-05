@@ -2,13 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class field : MonoBehaviour
 {
     GameObject Center;          // カメラやフィールドの回転の中心軸（の位置）
     GameObject StageManager;    // 各値が入ってるマネージャーを呼び出す
     manager script;             // マネージャーのスクリプト
+	bool isRotate = false;               //回転中に立つフラグ。回転中は入力を受け付けない
+	float cubeAngle = 0.0f;
+	
 
-    [SerializeField, PersistentAmongPlayMode] public int AppearSlimeCount;  //生成するスライム数
+	[SerializeField, PersistentAmongPlayMode] public int AppearSlimeCount;  //生成するスライム数
 
     [SerializeField, PersistentAmongPlayMode] public Vector3 SpawnSlimePos; //スライムごとの位置
 
@@ -47,7 +52,7 @@ public class field : MonoBehaviour
         if (Input.anyKey)
         {
             // 移動量
-            float ToRotate = 0.0f;//Input.GetAxis("Mouse X");
+            //float ToRotate = 0.0f;//Input.GetAxis("Mouse X");
 
             //==========================
             //　左にステージが90度傾く
@@ -56,7 +61,7 @@ public class field : MonoBehaviour
             {
                 //trueで左回転
                 script.SetTop(script.nowTop, true);
-                ToRotate = -90.0f;
+				StartCoroutine(MoveL());
 				script.operations(-1);
 
 			}
@@ -68,33 +73,157 @@ public class field : MonoBehaviour
             {
                 //falseで右回転
                 script.SetTop(script.nowTop, false);
-                ToRotate = 90.0f;
+				StartCoroutine(MoveR());
 				script.operations(-1);
 			}
-            // float mouseInputY = Input.GetAxis("Mouse Y");
-            // targetの位置のZ軸を中心に、回転（公転）する
-            switch (script.cameraRotate)
-            {
-                //カメラがＸ軸上にある場合
-                case true:
-                    transform.RotateAround
-                    (
-                        Center.transform.position, 
-                        Vector3.right, 
-                        ToRotate
-                    );
-                    break;
+          
 
-                //カメラがＺ軸上にある場合
-                case false:
-                    transform.RotateAround
-                    (
-                        Center.transform.position, 
-                        Vector3.forward, 
-                        ToRotate
-                    );
-                    break;
-            }
         }
     }
+	IEnumerator MoveR()
+{
+	//回転中のフラグを立てる
+	isRotate = true;
+
+	//回転処理
+	float sumAngle = 0f; //angleの合計を保存
+	while (sumAngle < 90f)
+	{
+		cubeAngle = 1.0f; //ここを変えると回転速度が変わる
+		sumAngle += cubeAngle;
+
+		// 90度以上回転しないように値を制限
+		if (sumAngle >90f)
+		{
+			cubeAngle -= sumAngle - 90f;
+		}
+			switch (script.cameraRotate)
+			{
+				//カメラが正面にある場合
+				case 0:
+
+					transform.RotateAround
+					(
+						Center.transform.position,
+						Vector3.forward,
+						cubeAngle
+					);
+					break;
+
+				//カメラが左側面にある場合
+				case 1:
+
+					transform.RotateAround
+					(
+						Center.transform.position,
+						Vector3.left,
+						cubeAngle
+					);
+					break;
+
+				//カメラが後ろ面にある場合
+				case 2:
+
+					transform.RotateAround
+					(
+						Center.transform.position,
+						Vector3.back,
+						cubeAngle
+					);
+					break;
+
+				//カメラが右側面にある場合
+				case 3:
+
+					transform.RotateAround
+					(
+						Center.transform.position,
+						Vector3.right,
+						cubeAngle
+					);
+					break;
+			}
+
+
+			yield return null;
+	}
+
+	//回転中のフラグを倒す
+	isRotate = false;
+
+	yield break;
 }
+	IEnumerator MoveL()
+	{
+		//回転中のフラグを立てる
+		isRotate = true;
+
+		//回転処理
+		float sumAngle = 0f; //angleの合計を保存
+		while (sumAngle > -90f)
+		{
+			cubeAngle = -1.0f; //ここを変えると回転速度が変わる
+			sumAngle += cubeAngle;
+
+			// 90度以上回転しないように値を制限
+			if (sumAngle<-90.0f)
+			{
+				cubeAngle -= sumAngle + 90.0f;
+			}
+			switch (script.cameraRotate)
+			{
+				//カメラが正面にある場合
+				case 0:
+
+					transform.RotateAround
+					(
+						Center.transform.position,
+						Vector3.forward,
+						cubeAngle
+					);
+					break;
+
+				//カメラが左側面にある場合
+				case 1:
+
+					transform.RotateAround
+					(
+						Center.transform.position,
+						Vector3.left,
+						cubeAngle
+					);
+					break;
+
+					//カメラが後ろ面にある場合
+				case 2:
+
+					transform.RotateAround
+					(
+						Center.transform.position,
+						Vector3.back,
+						cubeAngle
+					);
+					break;
+
+					//カメラが右側面にある場合
+				case 3:
+
+					transform.RotateAround
+					(
+						Center.transform.position,
+						Vector3.right,
+						cubeAngle
+					);
+					break;
+			}
+
+			yield return null;
+		}
+
+		//回転中のフラグを倒す
+		isRotate = false;
+
+		yield break;
+	}
+}
+
