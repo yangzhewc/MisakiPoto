@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class manager : MonoBehaviour
 {
-    public bool cameraRotate;   //true = X軸、false = Z軸
+    public int cameraRotate;   //true = X軸、false = Z軸
 	public int operate; //操作回数
 
     public enum Wall
@@ -29,7 +29,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
         for(int i=0;i<2;i++)
         DisappearSlimeNum[i] = 0;
         
-        cameraRotate = false;
+        cameraRotate = 0;
         nowTop = (int)Wall.Top;
 
 		operate = 440;
@@ -104,20 +104,44 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
         return new Vector3(x, y, z);
     }
     */
-    public void changeCameraRotate()
+    public void changeCameraRotateA()
     {
         switch (cameraRotate)
         {
-            case true:
-                cameraRotate = false;
+            case 0:
+                cameraRotate = 1;
                 break;
-            case false:
-                cameraRotate = true;
+            case 1:
+                cameraRotate = 2;
                 break;
-        }
+			case 2:
+				cameraRotate = 3;
+				break;
+			case 3:
+				cameraRotate = 0;
+				break;
+		}
     }
+	public void changeCameraRotateB()
+	{
+		switch (cameraRotate)
+		{
+			case 0:
+				cameraRotate = 3;
+				break;
+			case 1:
+				cameraRotate = 0;
+				break;
+			case 2:
+				cameraRotate = 1;
+				break;
+			case 3:
+				cameraRotate = 2;
+				break;
+		}
+	}
 
-    public void CreateSlime(int slimeType,GameObject DisappearSlime)
+	public void CreateSlime(int slimeType,GameObject DisappearSlime)
     {
         Vector3 tmp = DisappearSlime.transform.position;   //生成位置（＝変更前の位置)取得
     //    GameObject OYA = transform.parent.gameObject;       //親クラス取得

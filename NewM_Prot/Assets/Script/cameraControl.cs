@@ -37,12 +37,12 @@ public class cameraControl : MonoBehaviour
             float InputX = 0f;//Input.GetAxis("Mouse X");
             if (Input.GetKeyDown(KeyCode.A)) {
                 InputX = -90.0f;
-                script.changeCameraRotate();
+                script.changeCameraRotateA();
             }
 
             if (Input.GetKeyDown(KeyCode.D)) {
                 InputX = 90.0f;
-                script.changeCameraRotate();
+                script.changeCameraRotateB();
 
             }
                 
