@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7352610203971615468}
   - component: {fileID: 6023845675863681058}
   - component: {fileID: 5819485076575621814}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SlimeCollider
   m_TagString: SmallSlime
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 9123141072825271740}
   - component: {fileID: 9123141072825271741}
   - component: {fileID: 6045823407395715783}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: SmallSlime
   m_TagString: SmallSlime
   m_Icon: {fileID: 0}

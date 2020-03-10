@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1407364947081212264}
   - component: {fileID: 1407364947081212265}
   - component: {fileID: 4538232959467671059}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: MiddleSlime
   m_TagString: MiddleSlime
   m_Icon: {fileID: 0}
@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 128766332029673955, guid: 549c48f6939a2e14085d58cb0fad3338,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6855753477737669564, guid: 549c48f6939a2e14085d58cb0fad3338,
         type: 3}
