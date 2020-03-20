@@ -10,6 +10,9 @@ public class slimeControl : MonoBehaviour
     field F_script;
     bool isMove;
 
+    public GameObject BigExplosion;
+
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -52,24 +55,34 @@ public class slimeControl : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == this.gameObject.tag) {
-            switch (this.gameObject.tag) {
+        if (collision.gameObject.tag == this.gameObject.tag)
+        {
+            switch (this.gameObject.tag)
+            {
                 //大スライム同士が接触した場合
                 case "BigSlime":
                     Destroy(this.gameObject);
-					FindObjectOfType<Score>().AddPoint(10);
-					break;
+                    FindObjectOfType<Score>().AddPoint(10);
+                    break;
                 case "MiddleSlime":
                     script.CreateSlime((int)manager.SlimeSize.middle, this.gameObject);
-					FindObjectOfType<Score>().AddPoint(10);
-					break;
+                    FindObjectOfType<Score>().AddPoint(10);
+                    break;
                 case "SmallSlime:":
                     script.CreateSlime((int)manager.SlimeSize.small, this.gameObject);
-					FindObjectOfType<Score>().AddPoint(10);
-					break;
+                    FindObjectOfType<Score>().AddPoint(10);
+                    break;
                 default:
                     break;
             }
+
+            foreach(ContactPoint contactPoint in collision.contacts)
+            {
+                GameObject effect = (GameObject)Instantiate(BigExplosion, (Vector3)contactPoint.point, Quaternion.identity);
+
+                Destroy(effect, 1.5f);
+            }
+
         }
     }
         // private void OnCollisionEnter(Collision collision)
