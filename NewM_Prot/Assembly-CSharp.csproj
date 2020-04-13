@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
+    <Compile Include="Assets\Script\Effect_sound.cs" />
     <Compile Include="Assets\Script\PersistentAmongPlayModeAttribute.cs" />
     <Compile Include="Assets\Script\PersistentAmongPlayModeDrawer.cs" />
     <Compile Include="Assets\Script\PersistentAmongPlayModeProcessor.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="Assets\Script\cameraControl.cs" />
     <Compile Include="Assets\Script\field.cs" />
     <Compile Include="Assets\Script\manager.cs" />
+    <Compile Include="Assets\Script\menu_button.cs" />
     <Compile Include="Assets\Script\slimeControl.cs" />
     <Compile Include="Assets\Shared\Ramps\Runtime\RampAsset.cs" />
     <Compile Include="Assets\Shared\Scripts\AdjustTimeScale.cs" />
@@ -80,7 +82,6 @@
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile Overlay.shader" />
-    <None Include="Assets\material\NewShader.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Prefabs\Readme_Dissolve_Respawn_.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
@@ -88,7 +89,6 @@
     <None Include="Assets\EffectExamples\Magic Effects\Shaders\Ice.shader" />
     <None Include="Assets\material\sample.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\Respawn.shader" />
-    <None Include="Assets\material\Ripple.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
@@ -99,36 +99,35 @@
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\FireFly.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF Overlay.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Bitmap-Mobile.shader" />
-    <None Include="Assets\material\test.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\EffectExamples\Misc Effects\Shaders\Dissolve.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Users/user/Documents/MisakiPoto/NewM_Prot/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>D:/unnity  YANGZHE/unnity  YANGZHE/NewM_Prot/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AIModule">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.3f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
