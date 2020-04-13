@@ -22,6 +22,9 @@ public class manager : MonoBehaviour
     }
 public static int[] DisappearSlimeNum;//スライムを消して生む動き用
 
+    //スライムＳＥ用
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +36,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
         nowTop = (int)Wall.Top;
 
 		operate = 440;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -179,4 +183,10 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
 	{
 		operate = operate + point;
 	}
+
+    public void PlaySE(AudioClip tmp)
+    {
+        audioSource.PlayOneShot(tmp);
+        Debug.Log("ＳＥ発生");
+    }
 }

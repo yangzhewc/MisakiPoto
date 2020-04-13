@@ -11,9 +11,11 @@ public class field : MonoBehaviour
     manager script;             // マネージャーのスクリプト
 	bool isRotate = false;               //回転中に立つフラグ。回転中は入力を受け付けない
 	float cubeAngle = 0.0f;
-	
 
-	[SerializeField, PersistentAmongPlayMode] public int AppearSlimeCount;  //生成するスライム数
+
+
+
+    [SerializeField, PersistentAmongPlayMode] public int AppearSlimeCount;  //生成するスライム数
 
     [SerializeField, PersistentAmongPlayMode] public Vector3 SpawnSlimePos; //スライムごとの位置
 
@@ -43,6 +45,7 @@ public class field : MonoBehaviour
                 SmallSlime.tag
             );
         }
+      
     }
 
     // Update is called once per frame
@@ -225,5 +228,6 @@ public class field : MonoBehaviour
 
 		yield break;
 	}
+
 }
 
