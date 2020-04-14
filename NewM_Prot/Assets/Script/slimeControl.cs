@@ -96,7 +96,10 @@ public class slimeControl : MonoBehaviour
 
         }
     }
- 
+ public void SlimeDestroy()
+    {
+        Destroy(this.gameObject);
+    }
         // private void OnCollisionEnter(Collision collision)
         // {
         //     if (collision.gameObject.tag == this.gameObject.tag)
