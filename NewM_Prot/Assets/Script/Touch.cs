@@ -13,6 +13,7 @@ public class Touch : MonoBehaviour
     GameObject endObj;              //タッチ終点にあるオブジェクトを格納
     List<GameObject> removableSlimeList = new List<GameObject>();    //削除するスライムのリスト
     public string currentName;       //タグ判定用のstring変数
+
     //=========================
     // 初期化処理
     //=========================
@@ -69,6 +70,8 @@ public class Touch : MonoBehaviour
 
                         //削除対象のオブジェクトを格納
                         PushToList(hitObj);
+
+                        Debug.Log("削除対象にいれためう～");
                     }
                 }
                 else
@@ -93,16 +96,15 @@ public class Touch : MonoBehaviour
                     Manager = GameObject.Find("StageManager");
                     script = Manager.GetComponent<manager>();
                    
-                    /*
                     if (startObj.CompareTag("MiddleSlime"))
                     {
-                        script.CreateSlime((int)manager.SlimeSize.middle, endObj);
+                        script.CreateSlime((int)0, endObj);
                     }
                     else if (startObj.CompareTag("SmallSlime"))
                     {
-                        script.CreateSlime((int)manager.SlimeSize.small,endObj);
+                        script.CreateSlime((int)0,endObj);
                     }
-                    */
+                    
                     //スコアと消えるときの音はここ↓※これは昔つくったやーつ
 
                     //scoreGUI.SendMessage("AddPoint", point * remove_cnt);
@@ -130,14 +132,13 @@ public class Touch : MonoBehaviour
                     {
                         GameObject hitObj = hit.collider.gameObject;
 
-                        //同じ名前のブロックをクリック＆lastBallとは別オブジェクトである時
+                        //同じ名前のブロックをクリック＆endObjとは別オブジェクトである時
                         if (hitObj.tag == currentName && endObj != hitObj)
                         {
                             //２つのオブジェクトの距離を取得
-
                             float distance = Vector2.Distance(hitObj.transform.position, endObj.transform.position);
 
-                            if (distance < 5.0f)
+                            if (distance < 10.0f)
                             {
                                 Debug.Log("そのオブジェクト消えるよ");
                                 //削除対象のオブジェクトを格納
