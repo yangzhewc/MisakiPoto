@@ -29,11 +29,6 @@ public class slimeControl : MonoBehaviour
       
     }
    
-    //スライムをぶっこわす
-    public void SlimeDestroy()
-    {
-        Destroy(this.gameObject);
-    }
     // Update is called once per frame
     void Update()
     {
@@ -101,7 +96,10 @@ public class slimeControl : MonoBehaviour
 
         }
     }
- 
+ public void SlimeDestroy()
+    {
+        Destroy(this.gameObject);
+    }
         // private void OnCollisionEnter(Collision collision)
         // {
         //     if (collision.gameObject.tag == this.gameObject.tag)
