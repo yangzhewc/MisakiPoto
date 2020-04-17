@@ -62,6 +62,8 @@
      <Compile Include="Assets\Script\PersistentAmongPlayModeProcessor.cs" />
      <Compile Include="Assets\Script\Score.cs" />
      <Compile Include="Assets\Script\SlimeCollider.cs" />
+     <Compile Include="Assets\Script\TextAlphaChange.cs" />
+     <Compile Include="Assets\Script\Title.cs" />
      <Compile Include="Assets\Script\Touch.cs" />
      <Compile Include="Assets\Script\TouchEffect.cs" />
      <Compile Include="Assets\Script\TouchStateManager.cs" />
