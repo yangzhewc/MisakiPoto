@@ -6,9 +6,9 @@ namespace TouchStateManager
 {
     public class StateManager
     {
-        public bool       IsTouch;                    // タッチしているかどうかのフラグ
-        public Vector2    TouchPos;                   // タッチしている座標
-        public TouchPhase Phase;                      // タッチの状態（開始、最中、終了）
+        public bool         IsTouch;    // タッチしているかどうかのフラグ
+        public Vector2      TouchPos;   // タッチしている座標
+        public TouchPhase   Phase;      // タッチの状態（開始、最中、終了）
 
         //==============================
         // 初期化処理（コンストラクタ）
@@ -43,7 +43,7 @@ namespace TouchStateManager
             {
                 // 押した瞬間
                 if (Input.GetMouseButtonDown(0))
-                {                    
+                {
                     this.IsTouch = true;
                     this.Phase = TouchPhase.Began;
                     Debug.Log("押した瞬間");
