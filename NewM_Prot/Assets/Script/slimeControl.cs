@@ -12,8 +12,8 @@ public class slimeControl : MonoBehaviour
 
     public GameObject BigExplosion;
     //SE用変数
-    public AudioClip sound1;
-    public AudioClip sound2;
+    private AudioClip sound1;
+    private AudioClip sound2;
 
     // Start is called before the first frame update
     void Awake()
@@ -70,19 +70,19 @@ public class slimeControl : MonoBehaviour
             {
                 //大スライム同士が接触した場合
                 case "BigSlime":
-                    script.PlaySE(sound1);
+                    script.PlaySE();
                     Destroy(this.gameObject);
                     FindObjectOfType<Score>().AddPoint(10);
    
                     break;
                 case "MiddleSlime":
-  
+                    script.PlaySE();
                     script.CreateSlime((int)manager.SlimeSize.middle, this.gameObject);
                     FindObjectOfType<Score>().AddPoint(10);
                     
                     break;
                 case "SmallSlime:":
-                 
+                    script.PlaySE();
                     script.CreateSlime((int)manager.SlimeSize.small, this.gameObject);
                     FindObjectOfType<Score>().AddPoint(10);
                    

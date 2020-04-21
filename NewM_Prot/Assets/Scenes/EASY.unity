@@ -1549,6 +1549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraRotate: 0
   operate: 0
+  SE: {fileID: 8300000, guid: 2c82155e428199d418009e87933f9e1d, type: 3}
   nowTop: 0
 --- !u!4 &1773081674
 Transform:
@@ -1574,7 +1575,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: d35d37e2fc23f234a837001b3aa275c7, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2043,7 +2044,6 @@ GameObject:
   - component: {fileID: 2011406277}
   - component: {fileID: 2011406280}
   - component: {fileID: 2011406281}
-  - component: {fileID: 2011406282}
   - component: {fileID: 2011406283}
   m_Layer: 0
   m_Name: Main Camera
@@ -2226,18 +2226,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2011406282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011406276}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6c0dc18517a0734590f22afc7cf32a6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &2011406283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2253,8 +2241,8 @@ MonoBehaviour:
   red: 0
   green: 0
   blue: 0
-  speed: 0
-  power: 0
+  speed: 4
+  power: 0.012
   density: 100
 --- !u!1 &2066095914
 GameObject:

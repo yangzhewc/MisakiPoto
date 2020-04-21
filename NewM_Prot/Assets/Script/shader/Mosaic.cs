@@ -30,4 +30,16 @@ public class Mosaic : CustomImageEffect
 
     #endregion
 
+    public void SetSize(float a)
+    {
+        m_Size = a;
+    }
+    public float GetSize()
+    {
+        return m_Size;
+    }
+    public void AddSize(float a)
+    {
+        m_Size += a;
+    }
 }
