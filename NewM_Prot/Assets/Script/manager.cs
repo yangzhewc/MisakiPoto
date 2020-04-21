@@ -6,8 +6,10 @@ public class manager : MonoBehaviour
 {
     public int cameraRotate;   //true = X軸、false = Z軸
 	public int operate; //操作回数
+	public bool isRotate = false;//移動中判定
+	public bool isCamera = false;//カメラ移動中判定
 
-    public enum Wall
+	public enum Wall
     {
         Top = 0,
         Bottom,

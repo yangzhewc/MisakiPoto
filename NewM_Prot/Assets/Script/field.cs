@@ -51,42 +51,42 @@ public class field : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // キーを押している間
-        if (Input.anyKey)
-        {
-            // 移動量
-            //float ToRotate = 0.0f;//Input.GetAxis("Mouse X");
+		// キーを押している間
+		if (Input.anyKey)
+		{
+			// 移動量
+			//float ToRotate = 0.0f;//Input.GetAxis("Mouse X");
 
-            //==========================
-            //　左にステージが90度傾く
-            //==========================
-            if (Input.GetKeyDown(KeyCode.RightArrow))
-            {
-                //trueで左回転
-                script.SetTop(script.nowTop, true);
+			//==========================
+			//　左にステージが90度傾く
+			//==========================
+			if (Input.GetKeyDown(KeyCode.RightArrow) && script.isCamera == false && script.isRotate == false)
+			{
+				//trueで左回転
+				script.SetTop(script.nowTop, true);
 				StartCoroutine(MoveL());
 				script.operations(-1);
 
 			}
 
-            //==========================
-            //　右にステージが90度傾く
-            //==========================
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
-            {
-                //falseで右回転
-                script.SetTop(script.nowTop, false);
+			//==========================
+			//　右にステージが90度傾く
+			//==========================
+			if (Input.GetKeyDown(KeyCode.LeftArrow) && script.isCamera == false && script.isRotate == false)
+			{
+				//falseで右回転
+				script.SetTop(script.nowTop, false);
 				StartCoroutine(MoveR());
 				script.operations(-1);
 			}
-          
 
-        }
-    }
+
+		}
+	}
 	IEnumerator MoveR()
 {
 	//回転中のフラグを立てる
-	isRotate = true;
+	script.isRotate = true;
 
 	//回転処理
 	float sumAngle = 0f; //angleの合計を保存
@@ -152,14 +152,14 @@ public class field : MonoBehaviour
 	}
 
 	//回転中のフラグを倒す
-	isRotate = false;
+	script.isRotate = false;
 
 	yield break;
 }
 	IEnumerator MoveL()
 	{
 		//回転中のフラグを立てる
-		isRotate = true;
+		script.isRotate = true;
 
 		//回転処理
 		float sumAngle = 0f; //angleの合計を保存
@@ -224,7 +224,7 @@ public class field : MonoBehaviour
 		}
 
 		//回転中のフラグを倒す
-		isRotate = false;
+		script.isRotate = false;
 
 		yield break;
 	}
