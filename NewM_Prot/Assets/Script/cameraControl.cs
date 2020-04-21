@@ -27,6 +27,7 @@ public class cameraControl : MonoBehaviour
 
     void CameraRoll()
     {
+		
         // targetの移動量分、自分（カメラ）も移動する
         transform.position += targetObj.transform.position - targetPos;
         targetPos = targetObj.transform.position;
@@ -35,22 +36,25 @@ public class cameraControl : MonoBehaviour
         if (Input.anyKey) {
             // カメラ移動量
             float InputX = 0f;//Input.GetAxis("Mouse X");
-            if (Input.GetKeyDown(KeyCode.A)) {
+            if (Input.GetKeyDown(KeyCode.A)&&script.isRotate==false) {
                 InputX = -90.0f;
+				script.isCamera = true;
                 script.changeCameraRotateA();
             }
 
-            if (Input.GetKeyDown(KeyCode.D)) {
+            if (Input.GetKeyDown(KeyCode.D) && script.isRotate == false) {
                 InputX = 90.0f;
-                script.changeCameraRotateB();
+				script.isCamera = true;
+				script.changeCameraRotateB();
 
             }
                 
             // float mouseInputY = Input.GetAxis("Mouse Y");
             // targetの位置のY軸を中心に、回転（公転）する
             transform.RotateAround(targetPos, Vector3.up, InputX );
-            // カメラの垂直移動（※角度制限なし、必要が無ければコメントアウト）
-            // transform.RotateAround(targetPos, transform.right, mouseInputY * Time.deltaTime * 200f);
-        }
+			// カメラの垂直移動（※角度制限なし、必要が無ければコメントアウト）
+			// transform.RotateAround(targetPos, transform.right, mouseInputY * Time.deltaTime * 200f);
+			script.isCamera = false;
+		}
     }
 }
