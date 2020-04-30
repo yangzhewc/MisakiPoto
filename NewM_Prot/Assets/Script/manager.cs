@@ -6,10 +6,12 @@ public class manager : MonoBehaviour
 {
     public int cameraRotate;   //true = X軸、false = Z軸
 	public int operate; //操作回数
-	public bool isRotate = false;//移動中判定
-	public bool isCamera = false;//カメラ移動中判定
+    public bool isRotate = false;//移動中判定
+    public bool isCamera = false;//カメラ移動中判定
 
-	public enum Wall
+
+    public AudioClip SE;
+    public enum Wall
     {
         Top = 0,
         Bottom,
@@ -189,6 +191,11 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
     public void PlaySE(AudioClip tmp)
     {
         audioSource.PlayOneShot(tmp);
+        Debug.Log("ＳＥ発生");
+    }
+    public void PlaySE()
+    {
+        audioSource.PlayOneShot(SE);
         Debug.Log("ＳＥ発生");
     }
 }
