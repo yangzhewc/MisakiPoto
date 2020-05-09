@@ -14,7 +14,7 @@ public class TouchEffect : MonoBehaviour
     void Update()
     {
         //  クリック、あるいはタップした瞬間
-        if (Input.GetMouseButtonDown(0) || IsTap())
+        if (Input.GetMouseButtonDown(0))// || IsTap())
         {
             var pos = Camera.main.ScreenToWorldPoint(Input.mousePosition + Camera.main.transform.forward);
 
