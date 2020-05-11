@@ -111,8 +111,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BigExplosion: {fileID: 1121192042590650, guid: e1b08032bec16ba4eb1ae23cbd572664,
     type: 3}
-  sound1: {fileID: 8300000, guid: 52606f42ff5ce134bb391d3c23f66f7e, type: 3}
-  sound2: {fileID: 8300000, guid: e2ccf6ef0027b3241bd6d160920c30b3, type: 3}
 --- !u!54 &4538232959467671059
 Rigidbody:
   m_ObjectHideFlags: 0
