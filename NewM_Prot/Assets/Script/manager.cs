@@ -1,16 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class manager : MonoBehaviour
 {
     public int cameraRotate;   //true = X軸、false = Z軸
 	public int operate; //操作回数
-    public bool isRotate = false;//移動中判定
-    public bool isCamera = false;//カメラ移動中判定
+
+    public int ClearNum;  //クリアまでの数
+
+    public Fade fade;       //FadeCanvas取得
 
 
-    public AudioClip SE;
     public enum Wall
     {
         Top = 0,
@@ -38,7 +40,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
         
         cameraRotate = 0;
         nowTop = (int)Wall.Top;
-
+        
 		operate = 440;
         audioSource = GetComponent<AudioSource>();
     }
@@ -46,7 +48,10 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
     // Update is called once per frame
     void Update()
     {
-        
+      if(ClearNum == 2)
+        {
+           fadeStart();
+        }
     }
     public void SetTop(int ChangeTop,bool rollWay)
     {
@@ -193,9 +198,27 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
         audioSource.PlayOneShot(tmp);
         Debug.Log("ＳＥ発生");
     }
-    public void PlaySE()
+
+    public void clear(int Cpoint)
     {
-        audioSource.PlayOneShot(SE);
-        Debug.Log("ＳＥ発生");
+        ClearNum = ClearNum + Cpoint;
     }
+
+    public void fadeStart()
+    {
+        //アニメーションを掛けてシーン遷移する
+        fade.FadeIn(1f, () =>
+        {
+            if (SceneManager.GetActiveScene().name == "EASY+")
+            { // EASY+シーンでのみやりたい処理
+                SceneManager.LoadScene("EASY");
+            }
+            else if(SceneManager.GetActiveScene().name=="EASY")
+            { // EASYシーンでのみやりたい処理
+                SceneManager.LoadScene("HARD");
+            }
+           
+        });
+    }
+
 }
