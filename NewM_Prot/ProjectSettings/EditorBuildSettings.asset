@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TITLE.unity
     guid: 2e87cd2f3ec78da4785cf06c31da58dc
+  - enabled: 1
+    path: Assets/Scenes/kameyama/1.unity
+    guid: e629fa248e05f1d47af2f0486ff23f47
   m_configObjects: {}
