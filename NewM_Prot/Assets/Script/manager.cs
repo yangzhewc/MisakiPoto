@@ -8,11 +8,14 @@ public class manager : MonoBehaviour
     public int cameraRotate;   //true = X軸、false = Z軸
 	public int operate; //操作回数
 
+    public bool isRotate = false;
+    public bool isCamera = false;
+
     public int ClearNum;  //クリアまでの数
 
     public Fade fade;       //FadeCanvas取得
 
-
+    public AudioClip SE;
     public enum Wall
     {
         Top = 0,
@@ -196,6 +199,12 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
     public void PlaySE(AudioClip tmp)
     {
         audioSource.PlayOneShot(tmp);
+        Debug.Log("ＳＥ発生");
+    }
+
+    public void PlaySE()
+    {
+        audioSource.PlayOneShot(SE);
         Debug.Log("ＳＥ発生");
     }
 
