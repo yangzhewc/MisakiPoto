@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class StageSelect : MonoBehaviour
 {
-    [SerializeField] GameObject menuPanel;
-    [SerializeField] GameObject StageChoicePanel_1;
-    [SerializeField] GameObject HAZIMARINOUMI;
+    [SerializeField] GameObject menuPanel = default;
+    [SerializeField] GameObject StageChoicePanel_1 = default;
+    [SerializeField] GameObject HAZIMARINOUMI = default;
 
     // Start is called before the first frame update
     void Start()
