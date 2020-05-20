@@ -67,6 +67,7 @@
      <Compile Include="Assets\Script\PersistentAmongPlayModeAttribute.cs" />
      <Compile Include="Assets\Script\PersistentAmongPlayModeDrawer.cs" />
      <Compile Include="Assets\Script\PersistentAmongPlayModeProcessor.cs" />
+     <Compile Include="Assets\Script\Retry.cs" />
      <Compile Include="Assets\Script\Score.cs" />
      <Compile Include="Assets\Script\SlimeCollider.cs" />
      <Compile Include="Assets\Script\StageSelect.cs" />
