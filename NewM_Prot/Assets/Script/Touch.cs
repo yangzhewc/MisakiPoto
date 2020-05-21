@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TouchStateManager;
 
+
 public class Touch : MonoBehaviour
 {
     StateManager m_TouchManager;
@@ -11,6 +12,8 @@ public class Touch : MonoBehaviour
      private GameObject endObj;              // タッチ終点にあるオブジェクトを格納
     List<GameObject> removableSlimeList = new List<GameObject>();    // 削除するスライムのリスト
     public string currentName;       // タグ判定用のstring変数
+
+    public float MaxDistance;
 
     //マネージャー読み込み======
     public GameObject managerObj;
@@ -26,7 +29,7 @@ public class Touch : MonoBehaviour
         this.m_TouchManager = new StateManager();
         managerObj = GameObject.Find("StageManager");
         managerScript = managerObj.GetComponent<manager>();
-
+     
     }
 
     //=========================
@@ -41,7 +44,7 @@ public class Touch : MonoBehaviour
         StateManager TouchState = this.m_TouchManager.GetTouch();
 
         // タッチされている時
-        if (TouchState.IsTouch)
+        if (managerScript.isRotate==false&&TouchState.IsTouch)
         {
             Debug.Log("タッチ開始");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -87,10 +90,11 @@ public class Touch : MonoBehaviour
 
                 if (remove_cnt == 2)
                 {
+               
                     //中スライムが消された場合
                     if (startObj.CompareTag("MiddleSlime"))
                     {
-                        GameObject obj = (GameObject)Resources.Load("Prefab/Fields/FieldInBig");
+                        GameObject obj = (GameObject)Resources.Load("Prefab/Fields/FieldInBIg");
                         //プレハブを元に、インスタンスを生成
                         GameObject tmp=Instantiate(obj, 
                                     new Vector3
@@ -124,6 +128,8 @@ public class Touch : MonoBehaviour
 
                     GameObject.Destroy(startObj);
                     GameObject.Destroy(endObj);
+                    //          startObj.GetComponent<slimeControl>().DestroyAnimation(startObj.transform.position - endObj.transform.position);
+
                     // スコアと消えるときの音はここ↓※これは昔つくったやーつ
 
                     //scoreGUI.SendMessage("AddPoint", point * remove_cnt);
@@ -160,11 +166,13 @@ public class Touch : MonoBehaviour
                             // ２つのオブジェクトの距離を取得
                             float distance = Vector2.Distance(hitObj.transform.position, endObj.transform.position);
 
-                            if (distance <= 5.0f)
+                            if (distance <= MaxDistance)
                             {
                                 Debug.Log("z値を取得し比較");
                                 // zが同じであれば
-                                if (hitObj.transform.position.z == endObj.transform.position.z)
+                                
+                                if (Mathf.Floor(hitObj.transform.parent.position.z)/(MaxDistance/2) == Mathf.Floor(hitObj.transform.parent.position.z)/(MaxDistance/2)
+                                    &&    hitObj.transform.rotation.z == endObj.transform.rotation.z)
                                 {
                                     Debug.Log("削除します");
 
@@ -220,13 +228,15 @@ public class Touch : MonoBehaviour
         if (managerScript.cameraRotate % 2 == 0)
             prefRotate.y = 0f;
         else
-            prefRotate.y = 90f;
-
+            prefRotate.y = 90.0f;
+        
         //位置取得。
-        if (compared.x == compare.x) {
+        if (Mathf.Floor(compare.x) / (MaxDistance / 2) ==
+            Mathf.Floor(compared.x) / (MaxDistance / 2)) {
             //縦長スライム生成
             prefRotate.z = 90f;
-        } else if (compared.y == compare.y) {
+        } else if (Mathf.Floor(compare.y) / (MaxDistance / 2) ==
+            Mathf.Floor(compared.y) / (MaxDistance / 2)) {
             //横長スライム生成
             prefRotate.z = 0f;
         }

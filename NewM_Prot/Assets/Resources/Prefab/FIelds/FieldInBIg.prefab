@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 138367952356479938}
-  - component: {fileID: 1377858628980187235}
   m_Layer: 8
   m_Name: FieldInBIg
   m_TagString: BigSlime
@@ -32,20 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1377858628980187235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 138367952356479941}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af7655ccc32813a4b972ab5ecc93584b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AppearSlimeCount: 0
-  SpawnSlimePos: {x: 0, y: 0, z: 0}
 --- !u!1 &138367952473639261
 GameObject:
   m_ObjectHideFlags: 0
@@ -72,7 +57,7 @@ Transform:
   m_GameObject: {fileID: 138367952473639261}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.28571424, y: 0.28571427, z: 0.28571424}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 3882879186752872332}
   m_RootOrder: 0
@@ -121,6 +106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PosChecker: 0
   isChange: 0
+  pos: {x: 0, y: 0, z: 0}
 --- !u!1 &3678587022555386545
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +135,7 @@ Transform:
   m_GameObject: {fileID: 3678587022555386545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.2857141, y: 1.5714285, z: 1.5714285}
+  m_LocalScale: {x: 1.8000001, y: 1.8000001, z: 2}
   m_Children: []
   m_Father: {fileID: 3882879186752872332}
   m_RootOrder: 1
@@ -289,12 +275,17 @@ PrefabInstance:
     - target: {fileID: 1523101302063205815, guid: 363a0552d3291a94ca84a2b0216a0e5b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1523101302063205815, guid: 363a0552d3291a94ca84a2b0216a0e5b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 7
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1523101302063205815, guid: 363a0552d3291a94ca84a2b0216a0e5b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5245373249351898889, guid: 363a0552d3291a94ca84a2b0216a0e5b,
         type: 3}

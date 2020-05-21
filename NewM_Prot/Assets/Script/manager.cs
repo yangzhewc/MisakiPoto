@@ -18,11 +18,11 @@ public class manager : MonoBehaviour
     public AudioClip SE;
     public enum Wall
     {
-        Top = 0,
+       Top = 0,
         Bottom,
         Left,
         Right
-    }
+    }//前左後右で0~3
     public int nowTop;  //現在上にある面が何かを保持する
 
     public enum SlimeSize
@@ -191,7 +191,10 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
 
     }//slimeType,true=small,false=Middle
 
-	public void operations(int point)
+
+   
+
+    public void operations(int point)
 	{
 		operate = operate + point;
 	}
