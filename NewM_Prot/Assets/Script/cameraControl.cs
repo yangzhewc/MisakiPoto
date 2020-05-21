@@ -39,13 +39,13 @@ public class cameraControl : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.A)&&script.isRotate==false) {
                 InputX = -90.0f;
 				script.isCamera = true;
-                script.changeCameraRotateA();
+                script.changeCameraRotateLeft();
             }
 
             if (Input.GetKeyDown(KeyCode.D) && script.isRotate == false) {
                 InputX = 90.0f;
 				script.isCamera = true;
-				script.changeCameraRotateB();
+				script.changeCameraRotateRight();
 
             }
                 
@@ -57,4 +57,5 @@ public class cameraControl : MonoBehaviour
 			script.isCamera = false;
 		}
     }
+
 }

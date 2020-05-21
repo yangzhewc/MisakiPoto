@@ -120,7 +120,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
         return new Vector3(x, y, z);
     }
     */
-    public void changeCameraRotateA()
+    public void changeCameraRotateLeft()
     {
         switch (cameraRotate)
         {
@@ -138,7 +138,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
 				break;
 		}
     }
-	public void changeCameraRotateB()
+	public void changeCameraRotateRight()
 	{
 		switch (cameraRotate)
 		{
