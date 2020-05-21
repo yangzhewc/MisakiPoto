@@ -48,17 +48,15 @@ namespace TouchStateManager
                     this.Phase = TouchPhase.Began;
                     Debug.Log("押した瞬間");
                 }
-
                 // 離した瞬間
-                if (Input.GetMouseButtonUp(0))
+                else if (Input.GetMouseButtonUp(0))
                 {
                     this.IsTouch = true;
                     this.Phase = TouchPhase.Ended;
                     Debug.Log("離した瞬間");
                 }
-
                 // 押しっぱなし
-                if (Input.GetMouseButton(0))
+                else if (Input.GetMouseButton(0))
                 {
                     this.IsTouch = true;
                     this.Phase = TouchPhase.Moved;

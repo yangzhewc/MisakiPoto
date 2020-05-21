@@ -216,7 +216,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
     public void fadeStart()
     {
         //アニメーションを掛けてシーン遷移する
-        fade.FadeIn(1f, () =>
+        fade.FadeIn(1.0f, () =>
         {
             if (SceneManager.GetActiveScene().name == "EASY+")
             { // EASY+シーンでのみやりたい処理
@@ -226,7 +226,11 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
             { // EASYシーンでのみやりたい処理
                 SceneManager.LoadScene("HARD");
             }
-           
+            else if(SceneManager.GetActiveScene().name == "TITLE")
+            {
+                // EASY+シーンでのみやりたい処理
+                SceneManager.LoadScene("SELECT STAGE");
+            }
         });
     }
 

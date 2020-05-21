@@ -5,7 +5,6 @@ using TouchStateManager;
 
 public class Touch : MonoBehaviour
 {
-    GameObject Manager;
     StateManager m_TouchManager;
     public LayerMask mask;          // 特定レイヤーのみ判定衝突を行うようにするためのマスク、Unity上で設定（TouchManagerインスペクタ内）
     GameObject startObj;            // タッチ始点にあるオブジェクトを格納
