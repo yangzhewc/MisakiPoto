@@ -8,15 +8,15 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MENU Scene.unity
     guid: 0be853cc62ca1a7408437fb09dc8b954
-  - enabled: 1
-    path: Assets/Scenes/EASY+.unity
-    guid: f9133a1f29c3e3045b5ca1677fc3d007
-  - enabled: 1
-    path: Assets/Scenes/EASY.unity
-    guid: 7a0c9c95ea6c2714993a478928f361a6
-  - enabled: 1
-    path: Assets/Scenes/HARD.unity
-    guid: e5bafa2e2be41834c811287261aae53d
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/SELECT STAGE.unity
     guid: 225b36aea0a2822488a5b210f00a54af
@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/TITLE.unity
     guid: 2e87cd2f3ec78da4785cf06c31da58dc
   - enabled: 1
-    path: Assets/Scenes/kameyama/1.unity
+    path: Assets/Scenes/stage1/1.unity
     guid: e629fa248e05f1d47af2f0486ff23f47
   m_configObjects: {}

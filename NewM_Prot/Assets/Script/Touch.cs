@@ -99,9 +99,9 @@ public class Touch : MonoBehaviour
                         GameObject tmp=Instantiate(obj, 
                                     new Vector3
                                     (
-                                        (startObj.transform.position.x + endObj.transform.position.x) / 2f,
-                                        (startObj.transform.position.y + endObj.transform.position.y) / 2f,
-                                        (startObj.transform.position.z + endObj.transform.position.z) / 2f
+                                       (int)(startObj.transform.position.x + endObj.transform.position.x) / 2,
+                                    (int)(startObj.transform.position.y + endObj.transform.position.y) / 2,
+                                    (int)(startObj.transform.position.z + endObj.transform.position.z) / 2
                                      ),
                                       Quaternion.Euler(CreateSlimeQuarternion()));
                         //生成したプレハブをFieldCenterに登録する。
@@ -116,9 +116,9 @@ public class Touch : MonoBehaviour
                        GameObject tmp= Instantiate(obj,
                                     new Vector3
                                     (
-                                         (startObj.transform.position.x + endObj.transform.position.x) / 2f,
-                                        (startObj.transform.position.y + endObj.transform.position.y) / 2f,
-                                        (startObj.transform.position.z + endObj.transform.position.z) / 2f
+                                      (int)   (startObj.transform.position.x + endObj.transform.position.x) / 2,
+                                       (int) (startObj.transform.position.y + endObj.transform.position.y) / 2,
+                                       (int)(startObj.transform.position.z + endObj.transform.position.z) / 2
                                      ),
                                       Quaternion.Euler(CreateSlimeQuarternion()));
                         //生成したプレハブをFieldCenterに登録する。
@@ -171,8 +171,8 @@ public class Touch : MonoBehaviour
                                 Debug.Log("z値を取得し比較");
                                 // zが同じであれば
                                 
-                                if (Mathf.Floor(hitObj.transform.parent.position.z)/(MaxDistance/2) == Mathf.Floor(hitObj.transform.parent.position.z)/(MaxDistance/2)
-                                    &&    hitObj.transform.rotation.z == endObj.transform.rotation.z)
+                                if (Mathf.Floor(Mathf.Abs(startObj.transform.parent.position.z))/(MaxDistance/2) == Mathf.Floor(Mathf.Abs(hitObj.transform.parent.position.z)) /(MaxDistance/2)
+                                    &&    startObj.transform.rotation.z == hitObj.transform.rotation.z)
                                 {
                                     Debug.Log("削除します");
 
@@ -226,21 +226,23 @@ public class Touch : MonoBehaviour
         Vector3 prefRotate = new Vector3(0, 0, 0);
 
         if (managerScript.cameraRotate % 2 == 0)
-            prefRotate.y = 0f;
+            prefRotate.y = 0;
         else
-            prefRotate.y = 90.0f;
+            prefRotate.y = 90;
         
         //位置取得。
         if (Mathf.Floor(compare.x) / (MaxDistance / 2) ==
             Mathf.Floor(compared.x) / (MaxDistance / 2)) {
             //縦長スライム生成
-            prefRotate.z = 90f;
+            prefRotate.z = 90;
         } else if (Mathf.Floor(compare.y) / (MaxDistance / 2) ==
             Mathf.Floor(compared.y) / (MaxDistance / 2)) {
             //横長スライム生成
-            prefRotate.z = 0f;
+            prefRotate.z = 0;
         }
-
+   
+            prefRotate.y = startObj.transform.parent.transform.rotation.y;
+        
         return prefRotate;
     }
 

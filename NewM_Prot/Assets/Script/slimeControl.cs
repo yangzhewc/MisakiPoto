@@ -26,7 +26,16 @@ public class slimeControl : MonoBehaviour
         Physics.gravity = new Vector3(0, 0, 0);
         isMove = false;
         //SE取得
-     
+        if(transform.position.x>0)
+        Mathf.Ceil(transform.position.x);
+        else 
+            Mathf.Floor(transform.position.x);
+        Mathf.Ceil(transform.position.y);
+        Mathf.Ceil(transform.position.z);
+
+        Mathf.Ceil(transform.rotation.x);
+        Mathf.Ceil(transform.rotation.y);
+        Mathf.Ceil(transform.rotation.z);
     }
    
     //スライムをぶっこわす
@@ -63,45 +72,45 @@ public class slimeControl : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.tag == this.gameObject.tag)
-        {
-            switch (this.gameObject.tag)
-            {
-                //大スライム同士が接触した場合
-                case "BigSlime":
-                    script.PlaySE();
-                    Destroy(this.gameObject);
-                    FindObjectOfType<Score>().AddPoint(10);
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.tag == this.gameObject.tag)
+    //    {
+    //        switch (this.gameObject.tag)
+    //        {
+    //            //大スライム同士が接触した場合
+    //            case "BigSlime":
+    //                script.PlaySE();
+    //                Destroy(this.gameObject);
+    //                FindObjectOfType<Score>().AddPoint(10);
    
-                    break;
-                case "MiddleSlime":
-                    script.PlaySE();
-                  //  script.CreateSlime((int)manager.SlimeSize.middle, this.gameObject);
-                    FindObjectOfType<Score>().AddPoint(10);
+    //                break;
+    //            case "MiddleSlime":
+    //                script.PlaySE();
+    //              //  script.CreateSlime((int)manager.SlimeSize.middle, this.gameObject);
+    //                FindObjectOfType<Score>().AddPoint(10);
                     
-                    break;
-                case "SmallSlime:":
-                    script.PlaySE();
-             //       script.CreateSlime((int)manager.SlimeSize.small, this.gameObject);
-                    FindObjectOfType<Score>().AddPoint(10);
+    //                break;
+    //            case "SmallSlime:":
+    //                script.PlaySE();
+    //         //       script.CreateSlime((int)manager.SlimeSize.small, this.gameObject);
+    //                FindObjectOfType<Score>().AddPoint(10);
                    
-                    break;
-                default:
-                    break;
-            }
+    //                break;
+    //            default:
+    //                break;
+    //        }
 
-            foreach(ContactPoint contactPoint in collision.contacts)
-            {
+    //        foreach(ContactPoint contactPoint in collision.contacts)
+    //        {
 
-                GameObject effect = (GameObject)Instantiate(BigExplosion, (Vector3)contactPoint.point, Quaternion.identity);
+    //            GameObject effect = (GameObject)Instantiate(BigExplosion, (Vector3)contactPoint.point, Quaternion.identity);
 
-                Destroy(effect, 1.5f);
-            }
+    //            Destroy(effect, 1.5f);
+    //        }
 
-        }
-    }
+    //    }
+    //}
 
     // private void OnCollisionEnter(Collision collision)
     // {
@@ -182,4 +191,9 @@ public class slimeControl : MonoBehaviour
    //     gameObject.transform.position += Way/10f;
 
    // }
+   IEnumerator Fusion()
+    {
+
+        yield break;
+    }
     }
