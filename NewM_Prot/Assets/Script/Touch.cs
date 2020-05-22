@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using TouchStateManager;
 
+
 public class Touch : MonoBehaviour
 {
-    GameObject Manager;
     StateManager m_TouchManager;
     public LayerMask mask;          // 特定レイヤーのみ判定衝突を行うようにするためのマスク、Unity上で設定（TouchManagerインスペクタ内）
-    GameObject startObj;            // タッチ始点にあるオブジェクトを格納
-    GameObject endObj;              // タッチ終点にあるオブジェクトを格納
+    private GameObject startObj;            // タッチ始点にあるオブジェクトを格納
+     private GameObject endObj;              // タッチ終点にあるオブジェクトを格納
     List<GameObject> removableSlimeList = new List<GameObject>();    // 削除するスライムのリスト
     public string currentName;       // タグ判定用のstring変数
+
+    public float MaxDistance;
+
+    //マネージャー読み込み======
+    public GameObject managerObj;
+    manager managerScript;
+    //=======================亀山
 
     //=========================
     // 初期化処理
@@ -20,6 +27,9 @@ public class Touch : MonoBehaviour
     {
         // タッチ管理マネージャ生成
         this.m_TouchManager = new StateManager();
+        managerObj = GameObject.Find("StageManager");
+        managerScript = managerObj.GetComponent<manager>();
+     
     }
 
     //=========================
@@ -34,7 +44,7 @@ public class Touch : MonoBehaviour
         StateManager TouchState = this.m_TouchManager.GetTouch();
 
         // タッチされている時
-        if (TouchState.IsTouch)
+        if (managerScript.isRotate==false&&TouchState.IsTouch)
         {
             Debug.Log("タッチ開始");
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -80,19 +90,22 @@ public class Touch : MonoBehaviour
 
                 if (remove_cnt == 2)
                 {
+               
                     //中スライムが消された場合
                     if (startObj.CompareTag("MiddleSlime"))
                     {
-                        GameObject obj = (GameObject)Resources.Load("Prefab/Fields/FieldInBig");
+                        GameObject obj = (GameObject)Resources.Load("Prefab/Fields/FieldInBIg");
                         //プレハブを元に、インスタンスを生成
-                        Instantiate(obj, 
+                        GameObject tmp=Instantiate(obj, 
                                     new Vector3
                                     (
-                                        endObj.transform.position.x, 
-                                        endObj.transform.position.y, 
-                                        endObj.transform.position.z
-                                     ), 
-                                     Quaternion.identity);
+                                       (int)(startObj.transform.position.x + endObj.transform.position.x) / 2,
+                                    (int)(startObj.transform.position.y + endObj.transform.position.y) / 2,
+                                    (int)(startObj.transform.position.z + endObj.transform.position.z) / 2
+                                     ),
+                                      Quaternion.Euler(CreateSlimeQuarternion()));
+                        //生成したプレハブをFieldCenterに登録する。
+                        tmp.transform.parent = GameObject.Find("FieldCenter").transform;
                         Debug.Log("終点側に大スライムを生成");
                     }
                     //小スライムが消された場合
@@ -100,19 +113,23 @@ public class Touch : MonoBehaviour
                     {
                         GameObject obj = (GameObject)Resources.Load("Prefab/Fields/FieldInMid");
                         //プレハブを元に、インスタンスを生成
-                        Instantiate(obj,
+                       GameObject tmp= Instantiate(obj,
                                     new Vector3
                                     (
-                                        endObj.transform.position.x,
-                                        endObj.transform.position.y,
-                                        endObj.transform.position.z
+                                      (int)   (startObj.transform.position.x + endObj.transform.position.x) / 2,
+                                       (int) (startObj.transform.position.y + endObj.transform.position.y) / 2,
+                                       (int)(startObj.transform.position.z + endObj.transform.position.z) / 2
                                      ),
-                                     Quaternion.identity);
+                                      Quaternion.Euler(CreateSlimeQuarternion()));
+                        //生成したプレハブをFieldCenterに登録する。
+                        tmp.transform.parent = GameObject.Find("FieldCenter").transform;
                         Debug.Log("終点側に中スライムを生成");
                     }
 
                     GameObject.Destroy(startObj);
                     GameObject.Destroy(endObj);
+                    //          startObj.GetComponent<slimeControl>().DestroyAnimation(startObj.transform.position - endObj.transform.position);
+
                     // スコアと消えるときの音はここ↓※これは昔つくったやーつ
 
                     //scoreGUI.SendMessage("AddPoint", point * remove_cnt);
@@ -149,11 +166,13 @@ public class Touch : MonoBehaviour
                             // ２つのオブジェクトの距離を取得
                             float distance = Vector2.Distance(hitObj.transform.position, endObj.transform.position);
 
-                            if (distance <= 5.0f)
+                            if (distance <= MaxDistance)
                             {
                                 Debug.Log("z値を取得し比較");
                                 // zが同じであれば
-                                if (hitObj.transform.position.z == endObj.transform.position.z)
+                                
+                                if (Mathf.Floor(Mathf.Abs(startObj.transform.parent.position.z))/(MaxDistance/2) == Mathf.Floor(Mathf.Abs(hitObj.transform.parent.position.z)) /(MaxDistance/2)
+                                    &&    startObj.transform.rotation.z == hitObj.transform.rotation.z)
                                 {
                                     Debug.Log("削除します");
 
@@ -192,5 +211,43 @@ public class Touch : MonoBehaviour
         obj.name = "_" + obj.name;
         // 色の透明度を50%に変更
         //ChangeColor(obj, 0.5f);
+    }
+
+    /*==================================================
+     生成されるスライムの角度を
+     managerに保存されているカメラ位置に対応したRotateで生成する
+     ===================================================    */
+
+    Vector3 CreateSlimeQuarternion()
+    {
+        //角度別スライム生成
+        Vector3 compared = startObj.transform.position;
+        Vector3 compare = endObj.transform.position;
+        Vector3 prefRotate = new Vector3(0, 0, 0);
+
+        if (managerScript.cameraRotate % 2 == 0)
+            prefRotate.y = 0;
+        else
+            prefRotate.y = 90;
+        
+        //位置取得。
+        if (Mathf.Floor(compare.x) / (MaxDistance / 2) ==
+            Mathf.Floor(compared.x) / (MaxDistance / 2)) {
+            //縦長スライム生成
+            prefRotate.z = 90;
+        } else if (Mathf.Floor(compare.y) / (MaxDistance / 2) ==
+            Mathf.Floor(compared.y) / (MaxDistance / 2)) {
+            //横長スライム生成
+            prefRotate.z = 0;
+        }
+   
+            prefRotate.y = startObj.transform.parent.transform.rotation.y;
+        
+        return prefRotate;
+    }
+
+    public Vector3 GetStartObj()
+    {
+        return startObj.transform.position;
     }
 }

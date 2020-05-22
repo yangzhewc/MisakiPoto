@@ -7,6 +7,7 @@ public class Bottun : MonoBehaviour
     public bool ClickSide;//左右どちらかを判定する。L=false,R=True
     public bool isClicked;
     manager script;
+
     // Start is called before the first frame update
     void Start()
     {

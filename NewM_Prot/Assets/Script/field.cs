@@ -102,7 +102,7 @@ public class field : MonoBehaviour
             if (BottunScriptL.isClicked==true&& script.isCamera == false && script.isRotate == false) {
                 //trueで左回転
                 script.SetTop(script.nowTop, true);
-                StartCoroutine(RollY(false));
+                StartCoroutine(RollYL());
                 script.operations(-1);
 
             }
@@ -113,7 +113,7 @@ public class field : MonoBehaviour
             if (BottunScriptR.isClicked == true && script.isCamera == false && script.isRotate == false) {
                 //falseで右回転
                 script.SetTop(script.nowTop, false);
-                StartCoroutine(RollY(true));
+                StartCoroutine(RollYR());
                 script.operations(-1);
             }
         }
@@ -264,67 +264,131 @@ public class field : MonoBehaviour
 		yield break;
 	}
 
-    IEnumerator RollY(bool LorR) {
-      
+    IEnumerator RollYL()
+    {
+
         //回転中のフラグを立てる
         script.isRotate = true;
         //回転処理
         float sumAngle = 0f; //angleの合計を保存
 
-        switch (LorR) {
-            case false:
-                while (sumAngle > -90f) {
-                    cubeAngle = -1.0f; //ここを変えると回転速度が変わる
-                    sumAngle += cubeAngle;
+        while (sumAngle > -90f) {
+            cubeAngle = -1.0f; //ここを変えると回転速度が変わる
+            sumAngle += cubeAngle;
 
-                    // 90度以上回転しないように値を制限
-                    if (sumAngle < -90.0f) {
-                        cubeAngle -= sumAngle + 90.0f;
-                    }
-                 
-                    transform.RotateAround
-                         (
-                             Center.transform.position,
-                             Vector3.up,
-                             cubeAngle
-                         );
-                    yield return null;
-                }
-                BottunScriptL.SetisClicked(false);
-                break;
-            case true:
+            // 90度以上回転しないように値を制限
+            if (sumAngle < -90.0f) {
+                cubeAngle -= sumAngle + 90.0f;
+            }
 
-                while (sumAngle < 90f) {
-                    cubeAngle = 1.0f; //ここを変えると回転速度が変わる
-                    sumAngle += cubeAngle;
-
-                    // 90度以上回転しないように値を制限
-                    if (sumAngle > 90f) {
-                        cubeAngle -= sumAngle - 90f;
-                    }
-                    transform.RotateAround
-                                (
-                                    Center.transform.position,
-                                    Vector3.up,
-                                    cubeAngle
-                                );
-
-
-                    yield return null;
-                }
-                BottunScriptR.SetisClicked(false);
-                break;
-
-
+            transform.RotateAround
+                 (
+                     Center.transform.position,
+                     Vector3.up,
+                     cubeAngle
+                 );
+            yield return null;
         }
+        BottunScriptL.SetisClicked(false);
 
-        
-  
+      
+
+     
         //回転中のフラグを倒す
         script.isRotate = false;
-
+        Mathf.Ceil(transform.rotation.x);
+        Mathf.Ceil(transform.rotation.y);
+        Mathf.Ceil(transform.rotation.z);
         yield break;
-    }//L==false,R==true
+    }
 
+    IEnumerator RollYR()
+    {
+
+        //回転中のフラグを立てる
+        script.isRotate = true;
+        //回転処理
+        float sumAngle = 0f; //angleの合計を保存
+
+        while (sumAngle < 90f) {
+            cubeAngle = 1.0f; //ここを変えると回転速度が変わる
+            sumAngle += cubeAngle;
+
+            // 90度以上回転しないように値を制限
+            if (sumAngle > 90f) {
+                cubeAngle -= sumAngle - 90f;
+            }
+            transform.RotateAround
+                        (
+                            Center.transform.position,
+                            Vector3.up,
+                            cubeAngle
+                        );
+
+
+            yield return null;
+        }
+        BottunScriptR.SetisClicked(false);
+        //回転中のフラグを倒す
+        script.isRotate = false;
+        Mathf.Ceil(transform.rotation.x);
+        Mathf.Ceil(transform.rotation.y);
+        Mathf.Ceil(transform.rotation.z);
+        yield break;
+    }
+    //IEnumerator RollY(bool LorR)
+    //{
+
+    //    //回転中のフラグを立てる
+    //    script.isRotate = true;
+    //    //回転処理
+    //    float sumAngle = 0f; //angleの合計を保存
+
+    //    while (sumAngle > -90f) {
+    //        cubeAngle = -1.0f; //ここを変えると回転速度が変わる
+    //        sumAngle += cubeAngle;
+
+    //        // 90度以上回転しないように値を制限
+    //        if (sumAngle < -90.0f) {
+    //            cubeAngle -= sumAngle + 90.0f;
+    //        }
+
+    //        transform.RotateAround
+    //             (
+    //                 Center.transform.position,
+    //                 Vector3.up,
+    //                 cubeAngle
+    //             );
+    //        yield return null;
+    //    }
+    //    BottunScriptL.SetisClicked(false);
+
+
+    //    while (sumAngle < 90f) {
+    //        cubeAngle = 1.0f; //ここを変えると回転速度が変わる
+    //        sumAngle += cubeAngle;
+
+    //        // 90度以上回転しないように値を制限
+    //        if (sumAngle > 90f) {
+    //            cubeAngle -= sumAngle - 90f;
+    //        }
+    //        transform.RotateAround
+    //                    (
+    //                        Center.transform.position,
+    //                        Vector3.up,
+    //                        cubeAngle
+    //                    );
+
+
+    //        yield return null;
+    //    }
+    //    BottunScriptR.SetisClicked(false);
+
+
+    //    //回転中のフラグを倒す
+    //    script.isRotate = false;
+
+    //    yield break;
+    //}
 }
 

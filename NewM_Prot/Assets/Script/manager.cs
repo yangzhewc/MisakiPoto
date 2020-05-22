@@ -18,11 +18,11 @@ public class manager : MonoBehaviour
     public AudioClip SE;
     public enum Wall
     {
-        Top = 0,
+       Top = 0,
         Bottom,
         Left,
         Right
-    }
+    }//前左後右で0~3
     public int nowTop;  //現在上にある面が何かを保持する
 
     public enum SlimeSize
@@ -120,7 +120,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
         return new Vector3(x, y, z);
     }
     */
-    public void changeCameraRotateA()
+    public void changeCameraRotateLeft()
     {
         switch (cameraRotate)
         {
@@ -138,7 +138,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
 				break;
 		}
     }
-	public void changeCameraRotateB()
+	public void changeCameraRotateRight()
 	{
 		switch (cameraRotate)
 		{
@@ -191,7 +191,10 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
 
     }//slimeType,true=small,false=Middle
 
-	public void operations(int point)
+
+   
+
+    public void operations(int point)
 	{
 		operate = operate + point;
 	}
@@ -216,7 +219,7 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
     public void fadeStart()
     {
         //アニメーションを掛けてシーン遷移する
-        fade.FadeIn(1f, () =>
+        fade.FadeIn(1.0f, () =>
         {
             if (SceneManager.GetActiveScene().name == "EASY+")
             { // EASY+シーンでのみやりたい処理
@@ -226,7 +229,11 @@ public static int[] DisappearSlimeNum;//スライムを消して生む動き用
             { // EASYシーンでのみやりたい処理
                 SceneManager.LoadScene("HARD");
             }
-           
+            else if(SceneManager.GetActiveScene().name == "TITLE")
+            {
+                // EASY+シーンでのみやりたい処理
+                SceneManager.LoadScene("SELECT STAGE");
+            }
         });
     }
 
