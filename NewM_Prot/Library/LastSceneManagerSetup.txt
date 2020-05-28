@@ -1,5 +1,0 @@
-sceneSetups:
-- path: Assets/Scenes/SELECT STAGE.unity
-  isLoaded: 1
-  isActive: 1
-  isSubScene: 0
